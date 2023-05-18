@@ -6,34 +6,14 @@
 <input id="player5"><label id="player5-label"></label></br>
 <input id="player6"><label id="player6-label"></label></br>
 <script>
-    /*
     const inputs = document.getElementsByTagName("input")
-    const raise = document.getElementById("raise")
-	const limp = document.getElementById("limp")
-	for (let i = 0; i < inputs.length; i++) {
-        inputs[i].onkeyup = function () {
-             document.getElementById("player-label").innerText = (parseInt(player.value) * parseInt(limp.value)) + parseInt(raise.value)
-        }
-    }
-    */
-    const inputs = document.getElementsByTagName("input")
+	const labels = document.getElementsByTagName("label")
     const blinds = document.getElementById("blinds")
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].onkeyup = function () {
-            const labels = `${inputs[i].id}-label`
-            if (inputs[i].id !== "blinds" && inputs[i].type == "text") {
-                document.getElementById(labels).innerText = parseFloat(inputs[i].value) / parseFloat(blinds.value)
-            }
-            
+		for (let j = 0; j < labels.length; j++) {
+			labels[j].innerText = parseFloat(inputs[j + 1].value) / parseFloat(blinds.value)
+		}
         }
     }
-    blinds.onkeyup = function () {
-        for (let i = 0; i < inputs.length; i++) {
-            const labels = `${inputs[i].id}-label`
-            if (inputs[i].id !== "blinds" && inputs[i].type == "text") {
-                document.getElementById(labels).innerText = parseFloat(inputs[i].value) / parseFloat(blinds.value)
-            }
-        }
-    }
-    
 </script>
