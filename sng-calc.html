@@ -1,0 +1,29 @@
+<input id="blinds"> blinds</br>
+<input type="text" id="player1"><label id="player1-label"></label></br>
+<input id="player2"><label id="player2-label"></label></br>
+<input id="player3"><label id="player3-label"></label></br>
+<input id="player4"><label id="player4-label"></label></br>
+<input id="player5"><label id="player5-label"></label></br>
+<input id="player6"><label id="player6-label"></label></br>
+<script>
+    const inputs = document.getElementsByTagName("input")
+    const blinds = document.getElementById("blinds")
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].onkeyup = function () {
+            const labels = `${inputs[i].id}-label`
+            if (inputs[i].id !== "blinds" && inputs[i].type == "text") {
+                document.getElementById(labels).innerText = parseFloat(inputs[i].value) / parseFloat(blinds.value)
+            }
+            
+        }
+    }
+    blinds.onkeyup = function () {
+        for (let i = 0; i < inputs.length; i++) {
+            const labels = `${inputs[i].id}-label`
+            if (inputs[i].id !== "blinds" && inputs[i].type == "text") {
+                document.getElementById(labels).innerText = parseFloat(inputs[i].value) / parseFloat(blinds.value)
+            }
+        }
+    }
+    
+</script>
